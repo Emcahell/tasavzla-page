@@ -1,0 +1,277 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowLeft } from '@phosphor-icons/react/dist/ssr';
+
+const actualizado = '6 de noviembre de 2026';
+const version = '1.0.0';
+---
+
+<Layout
+  title="Política de Privacidad — TasaVzla"
+  description="Política de privacidad y uso de datos de TasaVzla: qué información se recopila, cómo se usa y cuáles son tus derechos."
+>
+  <div class="relative min-h-screen">
+    <header class="px-6 pt-10 pb-4">
+      <div class="max-w-3xl mx-auto">
+        <a
+          href="/"
+          class="animate-fade-in-down inline-flex items-center gap-2 text-sm text-white-primary/50 hover:text-white-primary/80 transition-colors"
+        >
+          <ArrowLeft size={16} weight="bold" />
+          Volver al inicio
+        </a>
+      </div>
+    </header>
+
+    <main class="px-6 pb-20 pt-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="animate-fade-in-up mb-12">
+          <p class="text-xs tracking-[0.2em] uppercase text-green-primary/80 mb-4">TasaVzla</p>
+          <h1 class="font-display text-4xl md:text-5xl text-white-primary mb-4">
+            Política de Privacidad y Uso de Datos
+          </h1>
+          <p class="text-white-primary/40 text-sm">
+            Última actualización: {actualizado} · Versión {version}
+          </p>
+        </div>
+
+        <article class="glass rounded-3xl px-6 py-10 md:px-10 md:py-12 text-white-primary/70 leading-relaxed">
+          <div class="space-y-10 text-[0.95rem]">
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">1. Introducción</h2>
+              <p>
+                TasaVzla es una aplicación móvil que permite consultar la tasa oficial de cambio del
+                Banco Central de Venezuela (BCV) entre el bolívar (VES) y el dólar (USD) o el euro
+                (EUR), y realizar conversiones monetarias rápidas.
+              </p>
+              <p class="mt-3">
+                Esta política explica qué información recopilamos, cómo la usamos, compartimos y
+                protegemos, y cuáles son tus derechos como usuario.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">2. Responsable del tratamiento</h2>
+              <p>
+                TasaVzla es un proyecto independiente. Si tienes dudas sobre esta política, puedes
+                contactarnos a través de los canales indicados al final de este documento.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">3. Información que recopilamos</h2>
+
+              <h3 class="text-white-primary/90 font-medium mb-2">3.1 Datos que NO recopilamos</h3>
+              <p>
+                TasaVzla <strong class="text-white-primary font-medium">no requiere registro</strong>,
+                ni solicita tu nombre, correo electrónico, número de teléfono, dirección ni ningún
+                otro dato de identificación personal. No creamos cuentas de usuario.
+              </p>
+
+              <h3 class="text-white-primary/90 font-medium mt-6 mb-2">
+                3.2 Datos técnicos y de uso (anónimos)
+              </h3>
+              <p>Para que la aplicación funcione, podemos recopilar automáticamente:</p>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>
+                  <strong class="text-white-primary font-medium">Información del dispositivo:</strong>
+                  modelo, sistema operativo, versión de la app e identificadores anónimos del
+                  dispositivo (vía <code class="text-white-primary/80 text-[0.85em]">expo-device</code> y
+                  <code class="text-white-primary/80 text-[0.85em]">expo-constants</code>), únicamente
+                  para fines de compatibilidad y mejora del rendimiento.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Datos de conexión:</strong>
+                  dirección IP anónima y datos de red necesarios para comunicarse con la API del BCV y
+                  obtener las tasas de cambio.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Preferencias dentro de la app:</strong>
+                  moneda seleccionada (USD o EUR), última tasa consultada y configuración local,
+                  almacenada exclusivamente en tu dispositivo.
+                </li>
+              </ul>
+
+              <h3 class="text-white-primary/90 font-medium mt-6 mb-2">
+                3.3 Datos proporcionados voluntariamente por el usuario
+              </h3>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>
+                  <strong class="text-white-primary font-medium">Portapapeles:</strong>
+                  cuando usas la función «Copiar», la aplicación lee y escribe temporalmente en el
+                  portapapeles de tu dispositivo (vía
+                  <code class="text-white-primary/80 text-[0.85em]">expo-clipboard</code>). No
+                  almacenamos este contenido en servidores propios.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Compartir:</strong>
+                  si eliges compartir la tasa o un resultado de conversión (vía
+                  <code class="text-white-primary/80 text-[0.85em]">expo-sharing</code>), la
+                  información se envía directamente a la aplicación de terceros que elijas (WhatsApp,
+                  redes sociales, etc.). TasaVzla no interviene en esa transmisión.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">4. Cómo usamos la información</h2>
+              <p>Usamos los datos únicamente para:</p>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>Mostrarte la tasa oficial del BCV actualizada.</li>
+                <li>Ejecutar la calculadora de conversión entre VES, USD y EUR.</li>
+                <li>
+                  Guardar en caché local (en tu dispositivo) las tasas consultadas para que la app
+                  funcione más rápido y pueda usarse parcialmente sin conexión.
+                </li>
+                <li>Mejorar la estabilidad y el rendimiento de la aplicación.</li>
+              </ul>
+              <p class="mt-4">
+                No usamos tus datos para publicidad personalizada, ni los vendemos a terceros.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">5. Almacenamiento y seguridad</h2>
+              <ul class="space-y-3 pl-5 list-disc marker:text-green-primary/50">
+                <li>
+                  <strong class="text-white-primary font-medium">Almacenamiento local:</strong>
+                  los datos de caché y preferencias se guardan en el almacenamiento local de tu
+                  dispositivo (vía
+                  <code class="text-white-primary/80 text-[0.85em]"
+                    >@react-native-async-storage/async-storage</code
+                  >). No se envían a nuestros servidores.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Servidores propios:</strong>
+                  TasaVzla no opera servidores que almacenen datos personales de usuarios.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Seguridad:</strong>
+                  nos esforzamos por proteger la información, pero ninguna transmisión por Internet es
+                  totalmente segura. No podemos garantizar la seguridad absoluta de los datos
+                  transmitidos.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">6. Compartición de información</h2>
+              <p>
+                TasaVzla <strong class="text-white-primary font-medium">no comparte, vende ni alquila</strong>
+                tu información personal a terceros, porque no recopilamos datos personales
+                identificables.
+              </p>
+              <p class="mt-3">Los únicos destinos de información son:</p>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>
+                  <strong class="text-white-primary font-medium">El Banco Central de Venezuela (BCV):</strong>
+                  para obtener las tasas oficiales. Ese organismo tiene sus propias políticas de
+                  privacidad.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Aplicaciones de terceros:</strong>
+                  solo si tú decides compartir contenido desde la app (por ejemplo, por WhatsApp o
+                  correo). En ese caso, rigen las políticas de esas aplicaciones.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">7. Derechos del usuario</h2>
+              <p>
+                Dado que no recopilamos datos personales identificables, no tenemos forma de vincular
+                información contigo de forma individual. No obstante, tú puedes:
+              </p>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>
+                  <strong class="text-white-primary font-medium">Eliminar datos locales:</strong>
+                  desinstalando la aplicación se borra el caché y las preferencias guardadas en tu
+                  dispositivo.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Elegir no compartir:</strong>
+                  no estás obligado a usar la función de compartir ni copiar al portapapeles.
+                </li>
+                <li>
+                  <strong class="text-white-primary font-medium">Contactarnos:</strong>
+                  si tienes dudas sobre esta política, escríbenos al correo indicado al final.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">
+                8. Enlaces y servicios de terceros
+              </h2>
+              <p>La aplicación puede interactuar con:</p>
+              <ul class="mt-3 space-y-2 pl-5 list-disc marker:text-green-primary/50">
+                <li>API del Banco Central de Venezuela (BCV).</li>
+                <li>
+                  Servicios de sistema de Expo y React Native (notificaciones, dispositivo,
+                  portapapeles, compartir).
+                </li>
+              </ul>
+              <p class="mt-4">
+                Cada uno de estos servicios tiene sus propias políticas de privacidad. Te recomendamos
+                revisarlas si usas esas funciones.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">9. Menores de edad</h2>
+              <p>
+                TasaVzla no está dirigida a menores de 13 años y no recopila intencionalmente
+                información de menores. Si eres padre o tutor y crees que tu hijo nos ha proporcionado
+                datos personales, contáctanos.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-white-primary font-semibold text-lg mb-3">10. Cambios a esta política</h2>
+              <p>
+                Podemos actualizar esta política de privacidad de vez en cuando. La versión más
+                reciente estará siempre disponible dentro de la aplicación o en nuestra landing. Te
+                recomendamos revisarla periódicamente.
+              </p>
+            </section>
+
+            <section class="border-t border-white/10 pt-10">
+              <h2 class="text-white-primary font-semibold text-lg mb-3">11. Contacto</h2>
+              <p>
+                Si tienes preguntas, inquietudes o solicitudes sobre esta política de privacidad,
+                puedes escribirnos a:
+              </p>
+              <a href="mailto:appykz.dev@gmail.com" class="link-accent mt-3 inline-block">
+                appykz.dev@gmail.com
+              </a>
+              <p class="text-white-primary/50 mt-2 text-sm">TasaVzla — Soporte</p>
+            </section>
+
+            <p class="border-t border-white/10 pt-8 text-white-primary/40 text-sm">
+              Última actualización: {actualizado} · Versión {version} · Plataforma: Android (Expo /
+              React Native)
+            </p>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="px-6 py-8 border-t border-white/5">
+      <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white-primary/40 text-sm">© 2026 TasaVzla</p>
+        <div class="flex items-center gap-6">
+          <a href="/" class="text-white-primary/50 hover:text-white-primary/80 text-sm transition-colors">
+            Inicio
+          </a>
+          <a
+            href="mailto:appykz.dev@gmail.com"
+            class="text-white-primary/50 hover:text-white-primary/80 text-sm transition-colors"
+          >
+            Contacto
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>

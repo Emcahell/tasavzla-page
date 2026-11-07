@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+/* ============================================
+   TasaVzla — Design System (DESIGN.md)
+   ============================================ */
+
+@theme {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #1a1a2e;
+  --color-bg-tertiary: #16213e;
+
+  --color-white-primary: #ffffff;
+
+  --color-green-primary: #00ff88;
+  --color-blue-primary: #3b82f6;
+
+  --color-wine: #dc2626;
+  --color-wine-dark: #b91c1c;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   Base
+   ============================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--color-bg-primary);
+    color: var(--color-white-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ::selection {
+    background: rgba(0, 255, 136, 0.3);
+    color: var(--color-white-primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-tertiary);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-blue-primary);
+  }
+}
+
+/* ============================================
+   Fondo animado — tres resplandores difusos
+   (verde, azul y vino) + overlay oscuro
+   ============================================ */
+
+.bg-animated {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+}
+
+.bg-animated::before,
+.bg-animated::after,
+.bg-animated .glow-wine {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bg-animated::before {
+  width: 620px;
+  height: 620px;
+  top: -220px;
+  right: -140px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.35), transparent 70%);
+  filter: blur(120px);
+  animation: glowDrift 14s ease-in-out infinite alternate;
+}
+
+.bg-animated::after {
+  width: 540px;
+  height: 540px;
+  bottom: -200px;
+  left: -160px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.32), transparent 70%);
+  filter: blur(120px);
+  animation: glowDrift 18s ease-in-out infinite alternate-reverse;
+}
+
+.bg-animated .glow-wine {
+  width: 460px;
+  height: 460px;
+  top: 45%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.18), transparent 70%);
+  filter: blur(140px);
+  animation: glowFloat 22s ease-in-out infinite alternate;
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(-40px, 50px, 0) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@keyframes glowFloat {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(-45%, -42%) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Overlay negro semitransparente */
+.bg-animated .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   Glassmorphism
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* ============================================
+   Tipografía
+   ============================================ */
+
+.font-display {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ============================================
+   Animaciones
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+.stagger-5 { animation-delay: 0.4s; }
+
+/* ============================================
+   Botón principal
+   ============================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #06121a;
+  background: linear-gradient(120deg, var(--color-green-primary) 0%, var(--color-blue-primary) 100%);
+  border-radius: 0.875rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  box-shadow: 0 8px 30px -8px rgba(0, 255, 136, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 14px 40px -10px rgba(0, 255, 136, 0.6);
+  filter: brightness(1.05);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-primary svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Espaciado de secciones
+   ============================================ */
+
+.section {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 7rem 2rem;
+  }
+}
+
+/* ============================================
+   Enlace de contacto
+   ============================================ */
+
+.link-accent {
+  color: var(--color-green-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(0, 255, 136, 0.35);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.link-accent:hover {
+  text-decoration-color: rgba(0, 255, 136, 0.85);
+}
+
+/* ============================================
+   Respeto por reduced motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in-down,
+  .animate-fade-in-scale {
+    animation: none;
+    opacity: 1;
+  }
+
+  .bg-animated::before,
+  .bg-animated::after,
+  .bg-animated .glow-wine {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

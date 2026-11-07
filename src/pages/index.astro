@@ -1,11 +1,369 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import screenshotCalculadora from '../assets/Screenshot_TasaVzla-2.webp';
+import screenshotTasa from '../assets/Screenshot_TasaVzla-1.webp';
+import {
+  AppleLogo,
+  ArrowRight,
+  ArrowsLeftRight,
+  Calculator,
+  CurrencyCircleDollar,
+  DeviceMobile,
+  EnvelopeSimple,
+  Feather,
+  GooglePlayLogo,
+  ShareNetwork,
+  Storefront,
+} from '@phosphor-icons/react/dist/ssr';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// TODO: reemplazar por la URL real del listado en Samsung Galaxy Store
+const galaxyStoreUrl = 'https://galaxy.store/tasavzla';
 ---
 
 <Layout>
-	<Welcome />
+  <div class="relative min-h-screen">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="relative pt-28 pb-20 px-6 text-center overflow-hidden">
+      <div class="max-w-4xl mx-auto">
+        <p class="animate-fade-in-down stagger-1 text-green-primary font-medium text-sm tracking-wide uppercase mb-6">
+          Aplicación móvil para Android
+        </p>
+
+        <h1 class="animate-fade-in-up stagger-2 font-display text-5xl md:text-7xl lg:text-8xl text-white-primary leading-[1.05] mb-6">
+          La tasa oficial del BCV,<br />
+          <span class="text-green-primary">en tu bolsillo.</span>
+        </h1>
+
+        <p class="animate-fade-in-up stagger-3 text-white-primary/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          Consulta el dólar y el euro a bolívares al instante, convierte montos y comparte el
+          resultado con un solo toque.
+        </p>
+
+        <div class="animate-fade-in-up stagger-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={galaxyStoreUrl}
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Storefront size={20} weight="fill" />
+            Instalar desde Galaxy Store
+          </a>
+        </div>
+
+        <p class="animate-fade-in-up stagger-4 mt-4 text-white-primary/50 text-sm">
+          Por ahora solo está disponible para usuarios de Samsung.
+        </p>
+
+        <div
+          class="animate-fade-in-up stagger-5 mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm text-white-primary/40"
+        >
+          <span class="inline-flex items-center gap-2">
+            <GooglePlayLogo size={15} />
+            Google Play — próximamente
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <AppleLogo size={15} />
+            iOS — en desarrollo
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SCREENSHOTS ===== -->
+    <section class="px-6 pb-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+          <!-- Phone mockup 1 -->
+          <div class="animate-fade-in-scale stagger-2 relative">
+            <div class="glass rounded-[2.5rem] p-3 aspect-[1080/2340] max-w-[280px] mx-auto">
+              <Image
+                src={screenshotTasa}
+                alt="Pantalla principal de TasaVzla con la tasa oficial del BCV"
+                widths={[280, 560]}
+                sizes="280px"
+                format="webp"
+                class="w-full h-full object-cover rounded-[2rem]"
+              />
+            </div>
+          </div>
+
+          <!-- Phone mockup 2 -->
+          <div class="animate-fade-in-scale stagger-3 relative">
+            <div class="glass rounded-[2.5rem] p-3 aspect-[1080/2340] max-w-[280px] mx-auto">
+              <Image
+                src={screenshotCalculadora}
+                alt="Calculadora de conversión de TasaVzla entre bolívares, dólares y euros"
+                widths={[280, 560]}
+                sizes="280px"
+                format="webp"
+                class="w-full h-full object-cover rounded-[2rem]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES GRID ===== -->
+    <section class="section">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-green-primary font-medium text-sm tracking-wide uppercase mb-4">
+            Funcionalidades
+          </p>
+          <h2 class="font-display text-3xl md:text-4xl text-white-primary mb-4">
+            Todo lo que necesitas
+          </h2>
+          <p class="text-white-primary/60 max-w-xl mx-auto">
+            Diseñada para quienes necesitan la tasa oficial del BCV de forma rápida y sencilla.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Feature 1 -->
+          <div class="glass rounded-2xl p-6 group hover:bg-white/[0.08] transition-colors duration-300">
+            <div
+              class="w-12 h-12 rounded-xl bg-green-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+            >
+              <CurrencyCircleDollar size={26} weight="bold" className="text-green-primary" />
+            </div>
+            <h3 class="text-white-primary font-semibold text-lg mb-2">Tasa oficial BCV</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Dólar y euro actualizados del Banco Central de Venezuela.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="glass rounded-2xl p-6 group hover:bg-white/[0.08] transition-colors duration-300">
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+            >
+              <Calculator size={26} weight="bold" className="text-blue-primary" />
+            </div>
+            <h3 class="text-white-primary font-semibold text-lg mb-2">Calculadora integrada</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Convierte de VES a USD/EUR y viceversa en segundos.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="glass rounded-2xl p-6 group hover:bg-white/[0.08] transition-colors duration-300 sm:col-span-2 lg:col-span-1"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+            >
+              <ShareNetwork size={26} weight="bold" className="text-white-primary/80" />
+            </div>
+            <h3 class="text-white-primary font-semibold text-lg mb-2">Copiar y compartir</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Lleva la tasa a donde quieras: portapapeles o redes sociales.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOCUS SECTION — solo lo esencial ===== -->
+    <section class="px-6 pb-24">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass rounded-3xl px-6 py-12 md:px-12 md:py-14">
+          <div class="md:flex md:items-start md:gap-12">
+            <div class="md:w-2/5 mb-10 md:mb-0">
+              <p class="text-green-primary font-medium text-sm tracking-wide uppercase mb-4">
+                Para qué existe
+              </p>
+              <h2 class="font-display text-3xl md:text-4xl text-white-primary mb-4">
+                Una sola cosa,<br class="hidden md:block" /> bien hecha
+              </h2>
+              <p class="text-white-primary/60 leading-relaxed">
+                TasaVzla está pensada para quienes necesitan la tasa oficial del BCV de forma rápida y
+                sencilla, sin aprender a usar una app nueva cada vez.
+              </p>
+            </div>
+
+            <ul class="md:w-3/5 space-y-7">
+              <li class="flex gap-4">
+                <DeviceMobile
+                  size={22}
+                  weight="bold"
+                  className="mt-0.5 flex-shrink-0 text-green-primary"
+                />
+                <div>
+                  <h3 class="text-white-primary font-semibold mb-1">Rápida por diseño</h3>
+                  <p class="text-white-primary/60 text-sm leading-relaxed">
+                    Abres la app y la tasa ya está a la vista. Sin pantallas intermedias ni pasos de
+                    más.
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <ArrowsLeftRight
+                  size={22}
+                  weight="bold"
+                  className="mt-0.5 flex-shrink-0 text-green-primary"
+                />
+                <div>
+                  <h3 class="text-white-primary font-semibold mb-1">Solo dos funciones</h3>
+                  <p class="text-white-primary/60 text-sm leading-relaxed">
+                    Mostrar la tasa y calcular la conversión. Ese es todo el alcance de la aplicación.
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <Feather
+                  size={22}
+                  weight="bold"
+                  className="mt-0.5 flex-shrink-0 text-green-primary"
+                />
+                <div>
+                  <h3 class="text-white-primary font-semibold mb-1">Sin cientos de opciones extra</h3>
+                  <p class="text-white-primary/60 text-sm leading-relaxed">
+                    Nada de ajustes interminables, cuentas ni funciones que nunca vas a usar. Menos es
+                    más.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section bg-bg-secondary/30">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-blue-primary font-medium text-sm tracking-wide uppercase mb-4">
+            Cómo funciona
+          </p>
+          <h2 class="font-display text-3xl md:text-4xl text-white-primary mb-4">
+            Tres pasos simples
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="text-center animate-fade-in-up stagger-1">
+            <div
+              class="w-10 h-10 rounded-full bg-green-primary/20 flex items-center justify-center mx-auto mb-5 text-green-primary font-semibold text-sm"
+            >
+              01
+            </div>
+            <h3 class="text-white-primary font-semibold mb-2">Elige tu moneda</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Cambia entre USD o EUR con un solo toque.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="text-center animate-fade-in-up stagger-2">
+            <div
+              class="w-10 h-10 rounded-full bg-green-primary/20 flex items-center justify-center mx-auto mb-5 text-green-primary font-semibold text-sm"
+            >
+              02
+            </div>
+            <h3 class="text-white-primary font-semibold mb-2">Consulta la tasa</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Mira la tasa actual y la anterior del día del BCV.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="text-center animate-fade-in-up stagger-3">
+            <div
+              class="w-10 h-10 rounded-full bg-green-primary/20 flex items-center justify-center mx-auto mb-5 text-green-primary font-semibold text-sm"
+            >
+              03
+            </div>
+            <h3 class="text-white-primary font-semibold mb-2">Convierte al instante</h3>
+            <p class="text-white-primary/60 text-sm leading-relaxed">
+              Ingresa un monto y obtén la conversión. Copia o comparte.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="relative px-6 py-28 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-transparent via-green-primary/[0.03] to-transparent"
+      >
+      </div>
+      <div class="max-w-2xl mx-auto text-center relative">
+        <h2
+          class="font-display text-4xl md:text-5xl text-white-primary mb-6 animate-fade-in-up stagger-1"
+        >
+          ¿Listo para conocer la tasa oficial?
+        </h2>
+        <p class="text-white-primary/60 text-lg mb-10 max-w-md mx-auto animate-fade-in-up stagger-2">
+          Instala TasaVzla desde la Galaxy Store y ten el dólar y el euro siempre a mano. Por
+          ahora solo está disponible para usuarios de Samsung.
+        </p>
+        <div class="animate-fade-in-up stagger-3">
+          <a
+            href={galaxyStoreUrl}
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Storefront size={20} weight="fill" />
+            Instalar desde Galaxy Store
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRIVACY TEASER ===== -->
+    <section class="px-6 py-20">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-white-primary/40 text-xs tracking-[0.2em] uppercase mb-4">Transparencia</p>
+        <h2 class="font-display text-2xl md:text-3xl text-white-primary mb-4">
+          Sin registro, sin publicidad, sin venta de datos
+        </h2>
+        <p class="text-white-primary/60 max-w-xl mx-auto leading-relaxed mb-8">
+          TasaVzla no pide tu nombre ni tu correo. Las preferencias se guardan en tu teléfono y las
+          conversiones ocurren en el dispositivo.
+        </p>
+        <a
+          href="/privacidad"
+          class="inline-flex items-center gap-2 text-green-primary text-sm font-medium hover:gap-3 transition-all duration-200"
+        >
+          Leer la política de privacidad completa
+          <ArrowRight size={16} weight="bold" />
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="px-6 py-8 border-t border-white/5">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white-primary/40 text-sm">
+          © 2026 TasaVzla — La tasa oficial del BCV, siempre a un toque.
+        </p>
+        <div class="flex items-center gap-6">
+          <a
+            href="/privacidad"
+            class="text-white-primary/50 hover:text-white-primary/80 text-sm transition-colors"
+          >
+            Privacidad
+          </a>
+          <a
+            href="mailto:appykz.dev@gmail.com"
+            class="inline-flex items-center gap-1.5 text-white-primary/50 hover:text-white-primary/80 text-sm transition-colors"
+          >
+            <EnvelopeSimple size={15} />
+            Contacto
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
 </Layout>
